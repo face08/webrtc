@@ -33,13 +33,21 @@
   <div class=ag-footer><a class=ag-href target=_blank href=https://www.agora.io> <span>Powered By Agora</span> </a>
     <span>Talk to Support: 400 632 6626</span></div>
 </div>
-<script>hookSetLocalDescription = RTCPeerConnection.prototype.setLocalDescription, RTCPeerConnection.prototype.setLocalDescription = function () {
-  console.log("hook:", arguments), hookSetLocalDescription(arguments)
-}, hookAddIceCandidate = RTCPeerConnection.prototype.addIceCandidate, RTCPeerConnection.prototype.addIceCandidate = function () {
-  console.log("hook:", arguments), hookAddIceCandidate(arguments)
-}</script>
+<script> hookSetLocalDescription = RTCPeerConnection.prototype.setLocalDescription;
+RTCPeerConnection.prototype.setLocalDescription = function () {
+  console.log("hook:", arguments);
+  debugger;
+  hookSetLocalDescription(...arguments);
+}
+
+hookAddIceCandidate = RTCPeerConnection.prototype.addIceCandidate;
+RTCPeerConnection.prototype.addIceCandidate = function () {
+  console.log("hook:", arguments);
+  debugger;
+  hookAddIceCandidate(...arguments)
+} </script>
 <script src=https://cdn.agora.io/sdk/web/AgoraRTCSDK-2.5.0.js></script>
-<script type="text/javascript" src="./assets/js/vendor.c9b5377.js"></script>
-<script type="text/javascript" src="./assets/js/meeting.c9b5377.js"></script>
+<script type="text/javascript" src="./assets/js/vendor.5ab2007.js"></script>
+<script type="text/javascript" src="./assets/js/meeting.5ab2007.js"></script>
 </body>
 </html>
