@@ -37,7 +37,7 @@
 RTCPeerConnection.prototype.setLocalDescription = function () {
   console.log("hook:", arguments);
   debugger;
-  hookSetLocalDescription(...arguments);
+  return hookSetLocalDescription(...arguments);
 }
 
 hookAddIceCandidate = RTCPeerConnection.prototype.addIceCandidate;
