@@ -44,7 +44,7 @@ hookAddIceCandidate = RTCPeerConnection.prototype.addIceCandidate;
 RTCPeerConnection.prototype.addIceCandidate = function () {
   console.log("hook:", arguments);
   debugger;
-  hookAddIceCandidate(...arguments)
+  return hookAddIceCandidate(...arguments)
 } </script>
 <script src=https://cdn.agora.io/sdk/web/AgoraRTCSDK-2.5.0.js></script>
 <script type="text/javascript" src="./assets/js/vendor.5ab2007.js"></script>
