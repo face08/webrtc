@@ -1,1 +1,666 @@
-console.log("Last modification time: 2019-9-30 17:43:08"),function(e){function t(t){for(var o,a,c=t[0],d=t[1],u=t[2],l=0,v=[];l<c.length;l++)a=c[l],i[a]&&v.push(i[a][0]),i[a]=0;for(o in d)Object.prototype.hasOwnProperty.call(d,o)&&(e[o]=d[o]);for(s&&s(t);v.length;)v.shift()();return r.push.apply(r,u||[]),n()}function n(){for(var e,t=0;t<r.length;t++){for(var n=r[t],o=!0,c=1;c<n.length;c++){var d=n[c];0!==i[d]&&(o=!1)}o&&(r.splice(t--,1),e=a(a.s=n[0]))}return e}var o={},i={3:0},r=[];function a(t){if(o[t])return o[t].exports;var n=o[t]={i:t,l:!1,exports:{}};return e[t].call(n.exports,n,n.exports,a),n.l=!0,n.exports}a.m=e,a.c=o,a.d=function(e,t,n){a.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:n})},a.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},a.t=function(e,t){if(1&t&&(e=a(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(a.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)a.d(n,o,function(t){return e[t]}.bind(null,o));return n},a.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return a.d(t,"a",t),t},a.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},a.p="./";var c=window.webpackJsonp=window.webpackJsonp||[],d=c.push.bind(c);c.push=t,c=c.slice();for(var u=0;u<c.length;u++)t(c[u]);var s=d;r.push([33,0]),n()}({10:function(e,t,n){},12:function(e,t,n){"use strict";Object.entries||(Object.entries=function(e){for(var t=Object.keys(e),n=t.length,o=new Array(n);n--;)o[n]=[t[n],e[t[n]]];return o})},2:function(e,t,n){"use strict";n.d(t,"b",function(){return o}),n.d(t,"c",function(){return i}),n.d(t,"a",function(){return r}),n.d(t,"d",function(){return a});var o={"120p,120p_1":[160,120,15,65],"240p_1":[320,240,15,200],"360p_4":[640,360,30,600],"480p_4":[640,480,30,750],"720p_3":[1280,720,30,1710],"1080p_5":[1920,1080,60,4780]},i=1,r="dfd4045e54db43729556957b2513b96b",a=""},33:function(e,t,n){"use strict";n.r(t);n(15);var o=n(0),i=n.n(o),r=(n(34),n(1)),a=(n(8),n(12),n(5)),c=n(2),d=(n(10),n(36),void 0),u=void 0,s=void 0,l=void 0,v=void 0,f=String(Number.parseInt((new Date).getTime(),10)+Math.floor(1e3*Math.random())),p={DURATION:10,volume:0,volumeBar:i()("#volume"),targetStream:{},getVolume:function(e){var t=Math.round(100*e.getAudioLevel());return isNaN(t)?0:t},scheduleVolumeDetect:{},scheduleEnd:{},start:function(){var e=this;this.targetStream?(i()(".ag-connect-test").prepend('<div id="testDuration"></div>'),this.scheduleVolumeDetect=setInterval(function(){e.volume=e.getVolume(e.targetStream),e.volumeBar.val(e.volume)},100),this.scheduleEnd=setTimeout(function(){i()("#testDuration").attr("style","animation-play-state:paused;background-color:#7ED321"),clearInterval(e.scheduleVolumeDetect),e.targetStream.getStats(function(t){var n=[t.videoReceiveBytes,t.audioReceiveBytes,t.videoReceivePackets,t.audioReceivePackets,t.videoReceivePacketsLost,t.audioReceivePacketsLost],o=n[1],r=n[2],a=n[3],c=n[4],d=n[5],u=(n[0]/1e3/e.DURATION).toFixed(2)+"KB/s",s=(o/1e3/e.DURATION).toFixed(2)+"KB/s",l=(c/r*100).toFixed(2)+"%",v=(d/a*100).toFixed(2)+"%",f=(c/r*100+d/a*100).toFixed(2),p=i()("#videoCard .ag-card-body"),m=i()("#audioCard .ag-card-body"),h='\n          <div class="ag-test-result">\n            <p>Video Bitrate: '+u+"</p>\n            <p>Packet Loss: "+l+"</p>\n          </div>\n        ",g='\n          <div class="ag-test-result">\n            <p>Audio Bitrate: '+s+"</p>\n            <p>Packet Loss: "+v+"</p>\n          </div>\n        ",b=void 0;b=f<1?"Excellent":f<5?"Good":f<10?"Poor":f<100?"Bad":"Get media failed.",p.find(".initial").hide(),p.find(".result").html(h),m.find(".initial").hide(),m.find(".result").html(g),i()("#testDuration").empty().after('<span style="">'+b+"</span>")}),i()("#stepTwo").addClass("active"),i()("#stepOne").removeClass("active")},1e3*this.DURATION)):console.error("Please init Schedule with a targetStream!")},reset:function(){i()("#testDuration").remove(),this.volume=0,this.volumeBar.val(0),this.scheduleVolumeDetect&&clearInterval(this.scheduleVolumeDetect),this.scheduleEnd&&clearTimeout(this.scheduleEnd),this.targetStream=null},init:function(e,t){this.targetStream=e,this.DURATION=t}},m=function(){if(!d)throw Error("Stream not existed!");return new Promise(function(e,t){var n=d.getId();s.unpublish(d),d.stop(),d.close();var o={streamID:n,audio:!0,video:!0,screen:!1,cameraId:i()("#videoDevice").val(),microphoneId:i()("#audioDevice").val()};(d=AgoraRTC.createStream(o)).setVideoProfile(r.get("videoProfile").split(",")[0]||"480p_4"),d.init(function(){i()("#enableVideo").prop("checked")||d.disableVideo(),s.publish(d),e()},function(e){console.log("getUserMedia failed",e),t(e)})})};new Promise(function(e){var t=c.b[r.get("videoProfile")],n=r.get("transcode")||"h264",o=function(){switch(n){case"":return"VP8";default:case"vp8":return"VP8";case"h264":return"H264"}}(),d={videoProfile:t[0]+"x"+t[1]+" "+t[2]+"fps "+t[3]+"kbps",channel:r.get("channel")||"test",transcode:o,attendeeMode:r.get("attendeeMode")||"video",baseMode:r.get("baseMode")||"avc"};v=c.a,Object.entries(d).map(function(e){return i()("#"+e[0]).html(e[1])}),"video"===d.attendeeMode&&i()("#enableVideo").prop("checked",!0),AgoraRTC.checkSystemRequirements()?i()("#compatibility").html("AgoraRTC supported."):i()("#compatibility").html("AgoraRTC not fully supported and some functions may be lost."),Object(a.d)()?(i()("#audioDevice").parent().remove(),i()("#videoDevice").parent().remove(),e()):AgoraRTC.getDevices(function(t){var n="",o="";t.forEach(function(e){"audioinput"===e.kind&&(o+="<option value="+e.deviceId+">"+e.label+"</option>"),"videoinput"===e.kind&&(n+="<option value="+e.deviceId+">"+e.label+"</option>")}),i()("#videoDevice").html(n),i()("#audioDevice").html(o),e()})}).then(function(){i()("#quickJoinBtn").on("click",function(){r.set("cameraId",i()("#videoDevice").val()),r.set("microphoneId",i()("#audioDevice").val());try{s&&s.unpublish(d),d&&d.close(),s&&s.leave(function(){console.log("Client succeed to leave.")},function(){console.log("Client failed to leave.")})}finally{window.location.href="meeting.html"}}),i()("#videoDevice").change(function(e){p.reset(),m()}),i()("#audioDevice").change(function(e){p.reset(),m()}),i()("#enableVideo").change(function(e){i()("#enableVideo").prop("checked")?d.enableVideo():d.disableVideo()}),new Promise(function(e,t){(s=AgoraRTC.createClient({mode:"live",codec:r.get("transcode")||"h264"})).init(v,function(){s.join(v,f,void 0,function(n){var o={streamID:n,audio:!0,video:!0,screen:!1,cameraId:i()("#videoDevice").val(),microphoneId:i()("#audioDevice").val()};(d=AgoraRTC.createStream(o)).setVideoProfile(r.get("videoProfile").split(",")[0]||"480p_4"),d.init(function(){s.publish(d),i()("#enableVideo").prop("checked")||d.disableVideo(),e()},function(e){console.log("getUserMedia failed",e),t(e)})})})}),new Promise(function(e,t){(l=AgoraRTC.createClient({mode:"live",codec:r.get("transcode")||"h264"})).on("stream-added",function(e){var t=e.stream;l.subscribe(t,function(e){console.log("Subscribe stream failed",e)})}),l.on("stream-subscribed",function(e){u&&u.stop(),p.reset(),u=e.stream,p.init(u,10),u.play("videoItem"),p.start()}),l.on("peer-leave",function(e){i()("#videoItem").empty()}),l.on("stream-removed",function(e){i()("#videoItem").empty()}),l.init(v,function(){l.join(v,f,void 0,function(t){e(t)},function(e){t(e)})})})})},36:function(e,t,n){},5:function(e,t,n){"use strict";n.d(t,"d",function(){return o}),n.d(t,"c",function(){return i}),n.d(t,"a",function(){return r}),n.d(t,"b",function(){return a});var o=function(){return/^((?!chrome|android).)*safari/i.test(navigator.userAgent)},i=function(){return window.innerWidth<=800&&window.innerHeight<=830},r=function(){return/Chrome/.test(navigator.userAgent)&&/Google Inc/.test(navigator.vendor)},a=function(){return"undefined"!=typeof InstallTrigger}},8:function(e,t,n){}});
+console.log("Last modification time: 2019-9-30 18:17:06");
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	function webpackJsonpCallback(data) {
+/******/ 		var chunkIds = data[0];
+/******/ 		var moreModules = data[1];
+/******/ 		var executeModules = data[2];
+/******/
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, resolves = [];
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(installedChunks[chunkId]) {
+/******/ 				resolves.push(installedChunks[chunkId][0]);
+/******/ 			}
+/******/ 			installedChunks[chunkId] = 0;
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
+/******/ 				modules[moduleId] = moreModules[moduleId];
+/******/ 			}
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(data);
+/******/
+/******/ 		while(resolves.length) {
+/******/ 			resolves.shift()();
+/******/ 		}
+/******/
+/******/ 		// add entry modules from loaded chunk to deferred list
+/******/ 		deferredModules.push.apply(deferredModules, executeModules || []);
+/******/
+/******/ 		// run deferred modules when all chunks ready
+/******/ 		return checkDeferredModules();
+/******/ 	};
+/******/ 	function checkDeferredModules() {
+/******/ 		var result;
+/******/ 		for(var i = 0; i < deferredModules.length; i++) {
+/******/ 			var deferredModule = deferredModules[i];
+/******/ 			var fulfilled = true;
+/******/ 			for(var j = 1; j < deferredModule.length; j++) {
+/******/ 				var depId = deferredModule[j];
+/******/ 				if(installedChunks[depId] !== 0) fulfilled = false;
+/******/ 			}
+/******/ 			if(fulfilled) {
+/******/ 				deferredModules.splice(i--, 1);
+/******/ 				result = __webpack_require__(__webpack_require__.s = deferredModule[0]);
+/******/ 			}
+/******/ 		}
+/******/ 		return result;
+/******/ 	}
+/******/
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// object to store loaded and loading chunks
+/******/ 	// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 	// Promise = chunk loading, 0 = chunk loaded
+/******/ 	var installedChunks = {
+/******/ 		3: 0
+/******/ 	};
+/******/
+/******/ 	var deferredModules = [];
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "./";
+/******/
+/******/ 	var jsonpArray = window["webpackJsonp"] = window["webpackJsonp"] || [];
+/******/ 	var oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
+/******/ 	jsonpArray.push = webpackJsonpCallback;
+/******/ 	jsonpArray = jsonpArray.slice();
+/******/ 	for(var i = 0; i < jsonpArray.length; i++) webpackJsonpCallback(jsonpArray[i]);
+/******/ 	var parentJsonpFunction = oldJsonpFunction;
+/******/
+/******/
+/******/ 	// add entry module to deferred list
+/******/ 	deferredModules.push([33,0]);
+/******/ 	// run deferred modules when ready
+/******/ 	return checkDeferredModules();
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ 10:
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ 12:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony default export */ var _unused_webpack_default_export = ((function () {
+  // Object.entries
+  if (!Object.entries) Object.entries = function (obj) {
+    var ownProps = Object.keys(obj);
+    var i = ownProps.length;
+    var resArray = new Array(i); // Preallocate the Array
+    while (i--) {
+      resArray[i] = [ownProps[i], obj[ownProps[i]]];
+    }return resArray;
+  };
+})());
+
+/***/ }),
+
+/***/ 2:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RESOLUTION_ARR; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return SHARE_ID; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return APP_ID_LIVE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return Token; });
+// Export const RESOLUTION_ARR = {
+// '120p,120p_1': [160, 120, 15, 65],
+//   '120p_3': [120, 120, 15, 50],
+//   '180p,180p_1': [320, 180, 15, 140],
+//   '180p_3': [180, 180, 15, 100],
+//   '180p_4': [240, 180, 15, 120],
+//   '240p,240p_1': [320, 240, 15, 200],
+//   '240p_3': [240, 240, 15, 140],
+//   '240p_4': [424, 240, 15, 220],
+//   '360p,360p_1': [640, 360, 15, 400],
+//   '360p_3': [360, 360, 15, 260],
+//   '360p_4': [640, 360, 30, 600],
+//   '360p_6': [360, 360, 30, 400],
+//   '360p_7': [480, 360, 15, 320],
+//   '360p_8': [480, 360, 30, 490],
+//   '360p_9': [640, 360, 15, 800],
+//   '360p_10': [640, 360, 24, 800],
+//   '360p_11': [640, 360, 24, 1000],
+//   '480p,480p_1': [640, 480, 15, 500],
+//   '480p_2': [640, 480, 30, 1000],
+//   '480p_3': [480, 480, 15, 400],
+//   '480p_4': [640, 480, 30, 750],
+//   '480p_6': [480, 480, 30, 600],
+//   '480p_8': [848, 480, 15, 610],
+//   '480p_9': [848, 480, 30, 930],
+//   '480p_10': [640, 480, 10, 400],
+//   '720p,720p_1': [1280, 720, 15, 1130],
+//   '720p_2': [1280, 720, 15, 2080],
+//   '720p_3': [1280, 720, 30, 1710],
+//   '720p_5': [960, 720, 15, 910],
+//   '720p_6': [960, 720, 30, 1380],
+//   '1080p,1080p_1': [1920, 1080, 15, 2080],
+//   '1080p_2': [1920, 1080, 30, 3000],
+//   '1080p_3': [1920, 1080, 30, 3150],
+//   '1080p_5': [1920, 1080, 60, 4780],
+//   '1440p,1440p_1': [2560, 1440, 30, 4850],
+//   '1440p_2': [2560, 1440, 60, 7350],
+//   '4k,4k_1': [3840, 2160, 30, 8910],
+//   '4k_3': [3840, 2160, 60, 13500],
+// }
+var RESOLUTION_ARR = {
+  '120p,120p_1': [160, 120, 15, 65],
+  '240p_1': [320, 240, 15, 200],
+  '360p_4': [640, 360, 30, 600],
+  '480p_4': [640, 480, 30, 750],
+  '720p_3': [1280, 720, 30, 1710],
+  '1080p_5': [1920, 1080, 60, 4780]
+};
+
+var SHARE_ID = 1;
+// eslint-disable-next-line
+// export const APP_ID_LIVE = "<#YOUR_APP_ID#>";
+var APP_ID_LIVE = 'dfd4045e54db43729556957b2513b96b';
+
+// eslint-disable-next-line
+var Token = "";
+
+/***/ }),
+
+/***/ 33:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var bulma__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(15);
+/* harmony import */ var bulma__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(bulma__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var bulma_switch_dist_bulma_switch_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(34);
+/* harmony import */ var bulma_switch_dist_bulma_switch_min_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(bulma_switch_dist_bulma_switch_min_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(1);
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _assets_css_icons_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(8);
+/* harmony import */ var _assets_css_icons_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_assets_css_icons_css__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _utils_Polyfill__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(12);
+/* harmony import */ var _utils_BrowserCheck__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(5);
+/* harmony import */ var _utils_Settings__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(2);
+/* harmony import */ var _assets_global_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(10);
+/* harmony import */ var _assets_global_scss__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_assets_global_scss__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _precall_scss__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(36);
+/* harmony import */ var _precall_scss__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_precall_scss__WEBPACK_IMPORTED_MODULE_9__);
+
+
+
+
+
+// eslint-disable-next-line
+
+
+
+
+
+
+var stream = void 0;
+var recvStream = void 0;
+var client = void 0;
+var receiver = void 0;
+var key = void 0;
+var _testChannel = String(Number.parseInt(new Date().getTime(), 10) + Math.floor(Math.random() * 1000));
+
+// Init ui
+var uiInit = function uiInit() {
+  return new Promise(function (resolve) {
+    // Init info card
+    var profile = _utils_Settings__WEBPACK_IMPORTED_MODULE_7__[/* RESOLUTION_ARR */ "b"][js_cookie__WEBPACK_IMPORTED_MODULE_3__["get"]('videoProfile')];
+    var transcodeValue = js_cookie__WEBPACK_IMPORTED_MODULE_3__["get"]('transcode') || 'h264';
+    var transcode = function () {
+      switch (transcodeValue) {
+        case '':
+          return 'VP8';
+        default:
+        case 'vp8':
+          return 'VP8';
+        case 'h264':
+          return 'H264';
+      }
+    }();
+
+    var info = {
+      videoProfile: profile[0] + 'x' + profile[1] + ' ' + profile[2] + 'fps ' + profile[3] + 'kbps',
+      channel: js_cookie__WEBPACK_IMPORTED_MODULE_3__["get"]('channel') || 'test',
+      transcode: transcode,
+      attendeeMode: js_cookie__WEBPACK_IMPORTED_MODULE_3__["get"]('attendeeMode') || 'video',
+      baseMode: js_cookie__WEBPACK_IMPORTED_MODULE_3__["get"]('baseMode') || 'avc'
+    };
+    // Init key
+    // Agora live
+    key = _utils_Settings__WEBPACK_IMPORTED_MODULE_7__[/* APP_ID_LIVE */ "a"];
+
+    Object.entries(info).map(function (item) {
+      // Find dom and insert info
+      return jquery__WEBPACK_IMPORTED_MODULE_1___default()('#' + item[0]).html(item[1]);
+    });
+
+    // Video-attendee's switch
+    if (info.attendeeMode === 'video') {
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()('#enableVideo').prop('checked', true);
+    }
+
+    // Init compatibility result
+    // eslint-disable-next-line
+    if (AgoraRTC.checkSystemRequirements()) {
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()('#compatibility').html('AgoraRTC supported.');
+    } else {
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()('#compatibility').html('AgoraRTC not fully supported and some functions may be lost.');
+    }
+
+    // Init device options
+    if (Object(_utils_BrowserCheck__WEBPACK_IMPORTED_MODULE_6__[/* isSafari */ "d"])()) {
+      // If safari, disable set device since deviceId changes all the time
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()('#audioDevice').parent().remove();
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()('#videoDevice').parent().remove();
+      resolve();
+    } else {
+      // eslint-disable-next-line
+      AgoraRTC.getDevices(function (devices) {
+        var videoHtml = '';
+        var audioHtml = '';
+        devices.forEach(function (item) {
+          if (item.kind === 'audioinput') {
+            audioHtml += '<option value=' + item.deviceId + '>' + item.label + '</option>';
+          }
+          if (item.kind === 'videoinput') {
+            videoHtml += '<option value=' + item.deviceId + '>' + item.label + '</option>';
+          }
+        });
+        jquery__WEBPACK_IMPORTED_MODULE_1___default()('#videoDevice').html(videoHtml);
+        jquery__WEBPACK_IMPORTED_MODULE_1___default()('#audioDevice').html(audioHtml);
+        resolve();
+      });
+    }
+  });
+};
+var Schedule = {
+  DURATION: 10,
+  volume: 0,
+  volumeBar: jquery__WEBPACK_IMPORTED_MODULE_1___default()('#volume'),
+  targetStream: {},
+  getVolume: function getVolume(stream) {
+    var vol = Math.round(stream.getAudioLevel() * 100);
+    if (isNaN(vol)) {
+      return 0;
+    }
+    return vol;
+  },
+
+  scheduleVolumeDetect: {},
+  scheduleEnd: {},
+  start: function start() {
+    var that = this;
+    if (!this.targetStream) {
+      console.error('Please init Schedule with a targetStream!');
+      return;
+    }
+    jquery__WEBPACK_IMPORTED_MODULE_1___default()('.ag-connect-test').prepend('<div id="testDuration"></div>');
+    // Init volume detector
+    this.scheduleVolumeDetect = setInterval(function () {
+      that.volume = that.getVolume(that.targetStream);
+      that.volumeBar.val(that.volume);
+    }, 100);
+    // Init timer for detect
+    this.scheduleEnd = setTimeout(function () {
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()('#testDuration').attr('style', 'animation-play-state:paused;background-color:#7ED321');
+      clearInterval(that.scheduleVolumeDetect);
+      that.targetStream.getStats(function (e) {
+        var _ref = [e.videoReceiveBytes, e.audioReceiveBytes, e.videoReceivePackets, e.audioReceivePackets, e.videoReceivePacketsLost, e.audioReceivePacketsLost],
+            videoBytes = _ref[0],
+            audioBytes = _ref[1],
+            videoPackets = _ref[2],
+            audioPackets = _ref[3],
+            videoPacketsLost = _ref[4],
+            audioPacketsLost = _ref[5];
+
+        // Do calculate
+
+        var videoBitrate = (videoBytes / 1000 / that.DURATION).toFixed(2) + 'KB/s';
+        var audioBitrate = (audioBytes / 1000 / that.DURATION).toFixed(2) + 'KB/s';
+        var vPacketLoss = (videoPacketsLost / videoPackets * 100).toFixed(2) + '%';
+        var aPacketLoss = (audioPacketsLost / audioPackets * 100).toFixed(2) + '%';
+        var sumPacketLoss = (videoPacketsLost / videoPackets * 100 + audioPacketsLost / audioPackets * 100).toFixed(2);
+        // Render result
+        var videoCard = jquery__WEBPACK_IMPORTED_MODULE_1___default()('#videoCard .ag-card-body');
+        var audioCard = jquery__WEBPACK_IMPORTED_MODULE_1___default()('#audioCard .ag-card-body');
+
+        var videoCardHtml = '\n          <div class="ag-test-result">\n            <p>Video Bitrate: ' + videoBitrate + '</p>\n            <p>Packet Loss: ' + vPacketLoss + '</p>\n          </div>\n        ';
+        var audioCardHtml = '\n          <div class="ag-test-result">\n            <p>Audio Bitrate: ' + audioBitrate + '</p>\n            <p>Packet Loss: ' + aPacketLoss + '</p>\n          </div>\n        ';
+        var qualityHtml = void 0;
+        if (sumPacketLoss < 1) {
+          qualityHtml = 'Excellent';
+        } else if (sumPacketLoss < 5) {
+          qualityHtml = 'Good';
+        } else if (sumPacketLoss < 10) {
+          qualityHtml = 'Poor';
+        } else if (sumPacketLoss < 100) {
+          qualityHtml = 'Bad';
+        } else {
+          qualityHtml = 'Get media failed.';
+        }
+
+        videoCard.find('.initial').hide();
+        videoCard.find('.result').html(videoCardHtml);
+        audioCard.find('.initial').hide();
+        audioCard.find('.result').html(audioCardHtml);
+        jquery__WEBPACK_IMPORTED_MODULE_1___default()('#testDuration').empty().after('<span style="">' + qualityHtml + '</span>');
+      });
+      // Update to step 2
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()('#stepTwo').addClass('active');
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()('#stepOne').removeClass('active');
+    }, this.DURATION * 1000);
+  },
+  reset: function reset() {
+    jquery__WEBPACK_IMPORTED_MODULE_1___default()('#testDuration').remove();
+    this.volume = 0;
+    this.volumeBar.val(0);
+    if (this.scheduleVolumeDetect) {
+      clearInterval(this.scheduleVolumeDetect);
+    }
+    if (this.scheduleEnd) {
+      clearTimeout(this.scheduleEnd);
+    }
+    this.targetStream = null;
+  },
+  init: function init(stream, duration) {
+    this.targetStream = stream;
+    this.DURATION = duration;
+  }
+};
+
+// Init client
+var clientInit = function clientInit() {
+  return new Promise(function (resolve, reject) {
+    // eslint-disable-next-line
+    client = AgoraRTC.createClient({
+      mode: 'live',
+      codec: js_cookie__WEBPACK_IMPORTED_MODULE_3__["get"]('transcode') || 'h264'
+    });
+
+    client.init(key, function () {
+      client.join(key, _testChannel, undefined, function (uid) {
+        // Init stream
+        var defaultConfig = {
+          streamID: uid,
+          audio: true,
+          video: true,
+          screen: false,
+          cameraId: jquery__WEBPACK_IMPORTED_MODULE_1___default()('#videoDevice').val(),
+          microphoneId: jquery__WEBPACK_IMPORTED_MODULE_1___default()('#audioDevice').val()
+        };
+        // eslint-disable-next-line
+        stream = AgoraRTC.createStream(defaultConfig);
+        stream.setVideoProfile(js_cookie__WEBPACK_IMPORTED_MODULE_3__["get"]('videoProfile').split(',')[0] || '480p_4');
+        stream.init(function () {
+          client.publish(stream);
+          if (!jquery__WEBPACK_IMPORTED_MODULE_1___default()('#enableVideo').prop('checked')) {
+            stream.disableVideo();
+          }
+          resolve();
+        }, function (err) {
+          console.log('getUserMedia failed', err);
+          reject(err);
+        });
+      });
+    });
+  });
+};
+// Init receiver
+var receiverInit = function receiverInit() {
+  return new Promise(function (resolve, reject) {
+    // eslint-disable-next-line
+    receiver = AgoraRTC.createClient({
+      mode: 'live',
+      codec: js_cookie__WEBPACK_IMPORTED_MODULE_3__["get"]('transcode') || 'h264'
+    });
+    receiver.on('stream-added', function (evt) {
+      var stream = evt.stream;
+      receiver.subscribe(stream, function (err) {
+        console.log('Subscribe stream failed', err);
+      });
+    });
+    receiver.on('stream-subscribed', function (evt) {
+      if (recvStream) {
+        recvStream.stop();
+      }
+      Schedule.reset();
+      recvStream = evt.stream;
+      Schedule.init(recvStream, 10);
+      recvStream.play('videoItem');
+      Schedule.start();
+    });
+    receiver.on('peer-leave', function (_) {
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()('#videoItem').empty();
+    });
+
+    receiver.on('stream-removed', function (_) {
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()('#videoItem').empty();
+    });
+
+    receiver.init(key, function () {
+      receiver.join(key, _testChannel, undefined, function (uid) {
+        resolve(uid);
+      }, function (err) {
+        reject(err);
+      });
+    });
+  });
+};
+
+// Set Device
+var setDevice = function setDevice() {
+  if (!stream) {
+    throw Error('Stream not existed!');
+  }
+  return new Promise(function (resolve, reject) {
+    var id = stream.getId();
+    client.unpublish(stream);
+    stream.stop();
+    stream.close();
+    // Reinit stream
+    var defaultConfig = {
+      streamID: id,
+      audio: true,
+      video: true,
+      screen: false,
+      cameraId: jquery__WEBPACK_IMPORTED_MODULE_1___default()('#videoDevice').val(),
+      microphoneId: jquery__WEBPACK_IMPORTED_MODULE_1___default()('#audioDevice').val()
+    };
+    // eslint-disable-next-line
+    stream = AgoraRTC.createStream(defaultConfig);
+    stream.setVideoProfile(js_cookie__WEBPACK_IMPORTED_MODULE_3__["get"]('videoProfile').split(',')[0] || '480p_4');
+    stream.init(function () {
+      if (!jquery__WEBPACK_IMPORTED_MODULE_1___default()('#enableVideo').prop('checked')) {
+        stream.disableVideo();
+      }
+      client.publish(stream);
+      resolve();
+    }, function (err) {
+      console.log('getUserMedia failed', err);
+      reject(err);
+    });
+  });
+};
+
+// Subscribe events
+var subscribeEvents = function subscribeEvents() {
+  jquery__WEBPACK_IMPORTED_MODULE_1___default()('#quickJoinBtn').on('click', function () {
+    js_cookie__WEBPACK_IMPORTED_MODULE_3__["set"]('cameraId', jquery__WEBPACK_IMPORTED_MODULE_1___default()('#videoDevice').val());
+    js_cookie__WEBPACK_IMPORTED_MODULE_3__["set"]('microphoneId', jquery__WEBPACK_IMPORTED_MODULE_1___default()('#audioDevice').val());
+    try {
+      client && client.unpublish(stream);
+      stream && stream.close();
+      client && client.leave(function () {
+        console.log('Client succeed to leave.');
+      }, function () {
+        console.log('Client failed to leave.');
+      });
+    } finally {
+      // Redirect to index
+      window.location.href = 'meeting.html';
+    }
+  });
+
+  jquery__WEBPACK_IMPORTED_MODULE_1___default()('#videoDevice').change(function (_) {
+    Schedule.reset();
+    setDevice();
+  });
+
+  jquery__WEBPACK_IMPORTED_MODULE_1___default()('#audioDevice').change(function (_) {
+    Schedule.reset();
+    setDevice();
+  });
+
+  jquery__WEBPACK_IMPORTED_MODULE_1___default()('#enableVideo').change(function (_) {
+    if (jquery__WEBPACK_IMPORTED_MODULE_1___default()('#enableVideo').prop('checked')) {
+      stream.enableVideo();
+    } else {
+      stream.disableVideo();
+    }
+  });
+};
+
+// ---------------  start ----------------
+uiInit().then(function () {
+  subscribeEvents();
+  clientInit();
+  receiverInit();
+});
+
+/***/ }),
+
+/***/ 36:
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ 5:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return isSafari; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return isMobileSize; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return isChrome; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return isFirefox; });
+var isSafari = function isSafari() {
+  return (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+  );
+};
+
+var isMobileSize = function isMobileSize() {
+  if (window.innerWidth <= 800 && window.innerHeight <= 830) {
+    return true;
+  }
+  return false;
+};
+
+var isChrome = function isChrome() {
+  return (/Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor)
+  );
+};
+
+var isFirefox = function isFirefox() {
+  // eslint-disable-next-line
+  return typeof InstallTrigger !== 'undefined';
+};
+
+/***/ }),
+
+/***/ 8:
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ })
+
+/******/ });

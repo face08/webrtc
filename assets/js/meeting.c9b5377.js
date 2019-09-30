@@ -1,1 +1,1361 @@
-console.log("Last modification time: 2019-9-30 17:43:08"),function(e){function t(t){for(var i,r,c=t[0],d=t[1],s=t[2],u=0,f=[];u<c.length;u++)r=c[u],o[r]&&f.push(o[r][0]),o[r]=0;for(i in d)Object.prototype.hasOwnProperty.call(d,i)&&(e[i]=d[i]);for(l&&l(t);f.length;)f.shift()();return a.push.apply(a,s||[]),n()}function n(){for(var e,t=0;t<a.length;t++){for(var n=a[t],i=!0,c=1;c<n.length;c++){var d=n[c];0!==o[d]&&(i=!1)}i&&(a.splice(t--,1),e=r(r.s=n[0]))}return e}var i={},o={2:0},a=[];function r(t){if(i[t])return i[t].exports;var n=i[t]={i:t,l:!1,exports:{}};return e[t].call(n.exports,n,n.exports,r),n.l=!0,n.exports}r.m=e,r.c=i,r.d=function(e,t,n){r.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:n})},r.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},r.t=function(e,t){if(1&t&&(e=r(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(r.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var i in e)r.d(n,i,function(t){return e[t]}.bind(null,i));return n},r.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return r.d(t,"a",t),t},r.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},r.p="./";var c=window.webpackJsonp=window.webpackJsonp||[],d=c.push.bind(c);c.push=t,c=c.slice();for(var s=0;s<c.length;s++)t(c[s]);var l=d;a.push([28,0]),n()}([,,function(e,t,n){"use strict";n.d(t,"b",function(){return i}),n.d(t,"c",function(){return o}),n.d(t,"a",function(){return a}),n.d(t,"d",function(){return r});var i={"120p,120p_1":[160,120,15,65],"240p_1":[320,240,15,200],"360p_4":[640,360,30,600],"480p_4":[640,480,30,750],"720p_3":[1280,720,30,1710],"1080p_5":[1920,1080,60,4780]},o=1,a="dfd4045e54db43729556957b2513b96b",r=""},function(e,t,n){"use strict";var i=n(0),o=n.n(i),a=function(){var e=function(e,t){e instanceof Array?e.map(function(e){return t(e)}):t(e)};return{hide:function(t){e(t,function(e){o()(e).hide()})},show:function(t){e(t,function(e){o()(e).show()})},toggle:function(t){e(t,function(e){o()(e).toggle()})},enable:function(t){e(t,function(e){o()(e).removeClass("disabled")})},disable:function(t){e(t,function(e){o()(e).addClass("disabled")})}}}();t.a=a},,function(e,t,n){"use strict";n.d(t,"d",function(){return i}),n.d(t,"c",function(){return o}),n.d(t,"a",function(){return a}),n.d(t,"b",function(){return r});var i=function(){return/^((?!chrome|android).)*safari/i.test(navigator.userAgent)},o=function(){return window.innerWidth<=800&&window.innerHeight<=830},a=function(){return/Chrome/.test(navigator.userAgent)&&/Google Inc/.test(navigator.vendor)},r=function(){return"undefined"!=typeof InstallTrigger}},function(e,t,n){"use strict";n(31);t.a={init:function(e,t,n){this.MAX_RATIO=n,this.MIN_RATIO=t,this.canvas=document.querySelector("#"+e)},_checkRatio:function(e,t){var n=t/e;return!(n>this.MAX_RATIO||n<this.MIN_RATIO)},customRender:function(e,t,n){this.canvas.classList.remove("container__flex"),this.canvas.classList.add("container__grid");var i=e.length;n=n||e[e.length-1]&&e[e.length-1].getId(),i>4&&1===t||i>8?(t=0,console.log("Automatically switch to tile mode..."),this.rendererFactory(e,t,n)):this.rendererFactory(e,t,n)},rendererFactory:function(e,t,n){if(0===t)this.tileRenderer(e);else if(1===t)this.pipRenderer(e,n);else{if(2!==t)throw Error("Wrong mode for renderer");this.sharingRenderer(e,n)}},updateVideoItem:function(e,t){var n=arguments.length>2&&void 0!==arguments[2]&&arguments[2],i=e.getId(),o=document.querySelector("#video-item-"+i);if(!o){o=document.createElement("section");var a=document.createElement("div");o.setAttribute("id","video-item-"+i),o.setAttribute("class","video-item"),a.setAttribute("class","video-item-box"),o.appendChild(a),this.canvas.appendChild(o),e.play("video-item-"+i)}n?o.classList.add("window__fit"):o.classList.remove("window__fit"),o.setAttribute("style",t)},enterFullScreen:function(){this.canvas.classList.add("fullscreen")},exitFullScreen:function(){this.canvas.classList.remove("fullscreen")},tileRenderer:function(e){var t=function(e){for(var t=e.width,n=e.height,i=e.minRatio,o=e.maxRatio,a=e.count,r=void 0,c=void 0,d=void 0,s=void 0,l=void 0,u=1;u<=a;u++){var f=u,h=Math.ceil(a/u);c=Math.floor((t-5)/h);var v=(d=Math.floor((n-5)/f))/c;v>o?d=(v=o)*c:v<i&&(c=d/(v=i));var m=c*d*a;(void 0===r||m>r)&&(r=m,l=d,s=c)}return{height:l,width:s}}({width:this.canvas.clientWidth,height:this.canvas.clientHeight,minRatio:this.MIN_RATIO,maxRatio:this.MAX_RATIO,count:e.length}),n=t.width,i=t.height;this.canvas.classList.remove("container__grid"),this.canvas.classList.add("container__flex");var o=!0,a=!1,r=void 0;try{for(var c,d=e[Symbol.iterator]();!(o=(c=d.next()).done);o=!0){var s=c.value;this.updateVideoItem(s,"width: "+n+"px; height: "+i+"px;")}}catch(e){a=!0,r=e}finally{try{!o&&d.return&&d.return()}finally{if(a)throw r}}},pipRenderer:function(e,t){var n=e.length;if(n>4)throw Error("PIP mode only suitable for less than 4 stream");if(!this._checkRatio(4*this.canvas.clientWidth/24,3*this.canvas.clientHeight/12)||!this._checkRatio(12*this.canvas.clientWidth/24,12*this.canvas.clientHeight/12))return this.tileRenderer(e);for(var i=0,o=0;i<n;i++){var a=e[i];a.getId()===t?this.updateVideoItem(a,"grid-area: span 12/span 24/13/25"):(this.updateVideoItem(a,"grid-area: span 3/span 4/"+(4+3*o)+"/25;\n                    z-index:1;width:calc(100% - 20px);height:calc(100% - 20px)"),o++)}},sharingRenderer:function(e,t){var n=e.length;if(n>8)throw Error("Screen Sharing Mode only suitable for less than 8 stream");if(!this._checkRatio(4*this.canvas.clientWidth/24,4*this.canvas.clientHeight/12)&&1!==e.length){var i=e.findIndex(function(e){return e.getId()===t});if(-1===i)throw Error("Cannot find stream by given mainId!");for(var o=0;o<n;o++)o!==i&&this.updateVideoItem(e[o],"display: none");return this.sharingRenderer([e[i]],t)}var a=[].concat(function(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}(e));if(8===n){var r=a.findIndex(function(e){return e.hasAudio()&&!e.hasVideo()});-1===r&&(r=7);var c=a[r];this.updateVideoItem(c,"display: none"),a.splice(r,1)}var d=!0,s=!1,l=void 0;try{for(var u,f=a[Symbol.iterator]();!(d=(u=f.next()).done);d=!0){var h=u.value;h.getId()===t?1===n?this.updateVideoItem(h,"grid-area: span 12/span 24/13/25;",!0):n<5?this.updateVideoItem(h,"grid-area: span 12/span 20/13/25;",!0):this.updateVideoItem(h,"grid-area: span 12/span 16/13/21;",!0):this.updateVideoItem(h,"grid-area: span 4/span 4")}}catch(e){s=!0,l=e}finally{try{!d&&f.return&&f.return()}finally{if(s)throw l}}}}},function(e,t,n){"use strict";n.d(t,"b",function(){return o}),n.d(t,"a",function(){return i});var i=function(e,t,n){console.log("%c "+e+": "+n,"color: "+t)},o={init:function(e,t){return function(n){return i(e,t,n)}}}},function(e,t,n){},,function(e,t,n){},,function(e,t,n){"use strict";Object.entries||(Object.entries=function(e){for(var t=Object.keys(e),n=t.length,i=new Array(n);n--;)i[n]=[t[n],e[t[n]]];return i})},,,,,function(e,t,n){"use strict";var i=n(0),o=n.n(i),a=function(){var e=o()(".notification-container");e.length||(o()("body").append('<div class="notification-container" \n                    style="z-index: 12;position: absolute;\n                    width: 38.2%;max-width: 450px; \n                    min-width: 300px;left: 0;\n                    bottom: 0;"></div>'),e=o()(".notification-container"));var t=function(t,n,i){var a=(new Date).getTime(),r='<div id="notify-'+a+'" class="notification is-'+t+'">\n                                <button class="delete"></button>\n                                '+n+"\n                            </div>";e.append(r),o()("#notify-"+a+" .delete").on("click",function(){o()("#notify-"+a).remove()}),setTimeout(function(){o()("#notify-"+a).remove()},i)};return{primary:function(e,n){t("primary",e,n)},link:function(e,n){t("link",e,n)},info:function(e,n){t("info",e,n)},success:function(e,n){t("success",e,n)},warning:function(e,n){t("warning",e,n)},danger:function(e,n){t("danger",e,n)}}}();t.a=a},,,,,,,,,,,function(e,t,n){"use strict";n.r(t),function(e){n(15);var t=n(0),i=n.n(t),o=n(1),a=n(19),r=(n(8),n(10),n(29),n(3)),c=n(5),d=n(17),s=n(6),l=n(2),u=n(7),f=(n(12),{}),h={},v={},m=[],p=null,g=null,b=void 0,y=void 0,w=u.b.init("global","blue"),I=u.b.init("share","yellow"),M=u.b.init("local","green"),S=function(e,t){return new Promise(function(n,i){e.init(t.key,function(){w("AgoraRTC client initialized");var o=l.b[t.videoProfileLow];e.join(t.token,t.channel,t.uid,function(t){Object(u.a)(t,"brown","User "+t+" join channel successfully"),Object(u.a)(t,"brown",(new Date).toLocaleTimeString()),e.setLowStreamParameter({width:o[0],height:o[1],framerate:o[2],bitrate:o[3]}),n(t)},function(e){i(e)})})})},R=function(e,t,n){var i={streamID:e,audio:!0,video:!0,screen:!1};switch(t.attendeeMode){case"audio-only":i.video=!1;break;case"audience":i.video=!1,i.audio=!1;break;default:case"video":}var o=AgoraRTC.createStream(Object(a.a)(i,n));return o.setVideoProfile(t.videoProfile),o},_=function(){try{p&&p.unpublish(g),g&&g.close(),p&&p.leave(function(){I("Share client succeed to leave.")},function(){I("Share client failed to leave.")})}finally{p=null,g=null}};window.installSuccess=function(){w.apply(void 0,arguments)},window.installError=function(){w.apply(void 0,arguments),d.a.danger("Failed to install the extension, please check the network and console.",3e3)};var k=function(e){m.map(function(t,n){return t.getId()===e?(m[n].close(),i()("#video-item-"+e).remove(),m.splice(n,1),1):0}),m.length<=4&&2!==f.displayMode&&r.a.enable(".displayModeBtn"),s.a.customRender(m,f.displayMode,b)},x=function(e){var t=arguments.length>1&&void 0!==arguments[1]&&arguments[1],n=e.getId();m.some(function(e){return e.getId()===n})||(t?m.push(e):m.unshift(e),m.length>4&&(f.displayMode=1===f.displayMode?0:f.displayMode,r.a.disable([".displayModeBtn",".disableRemoteBtn"])),s.a.customRender(m,f.displayMode,b))},A=function(e){return m.filter(function(t){return t.getId()===e})[0]},B=function(e,t){if(e!==t){var n=void 0,i=void 0,o=!0,a=!1,r=void 0;try{for(var c,d=m[Symbol.iterator]();!(o=(c=d.next()).done);o=!0){var s=c.value,l=s.getId();l===e?n=s:l===t&&(i=s)}}catch(e){a=!0,r=e}finally{try{!o&&d.return&&d.return()}finally{if(a)throw r}}n&&h.setRemoteVideoStreamType(n,1),i&&h.setRemoteVideoStreamType(i,0)}};(function(e){switch(s.a.init("ag-canvas",9/16,1.6),Object(c.c)()&&s.a.enterFullScreen(),Object(c.b)()||Object(c.a)()||r.a.disable(".shareScreenBtn"),i()("#room-name").html(e.channel),e.attendeeMode){case"audio-only":r.a.hide([".videoControlBtn",".shareScreenBtn"]);break;case"audience":r.a.hide([".videoControlBtn",".audioControlBtn",".shareScreenBtn"]);break;default:case"video":}})(f=function(){var e={videoProfile:o.get("videoProfile").split(",")[0]||"480p_4",videoProfileLow:o.get("videoProfileLow"),cameraId:o.get("cameraId"),microphoneId:o.get("microphoneId"),channel:o.get("channel")||"test",transcode:o.get("transcode")||"h264",attendeeMode:o.get("attendeeMode")||"video",baseMode:o.get("baseMode")||"avc",displayMode:1,uid:void 0,resolution:void 0},t=l.b[o.get("videoProfile")];return e.resolution=t[0]/t[1]||4/3,e.key=l.a,e.token=l.d,e}()),h=AgoraRTC.createClient({codec:f.transcode,mode:"live"}),i()(".displayModeBtn").on("click",function(e){e.currentTarget.classList.contains("disabled")||m.length<=1||(1===f.displayMode?(f.displayMode=0,r.a.disable(".disableRemoteBtn")):0===f.displayMode&&(f.displayMode=1,r.a.enable(".disableRemoteBtn")),s.a.customRender(m,f.displayMode,b))}),i()(".exitBtn").on("click",function(){try{p&&_(),h&&h.unpublish(v),v&&v.close(),h&&h.leave(function(){M("Client succeed to leave.")},function(){M("Client failed to leave.")})}finally{window.location.href="index.html"}}),i()(".videoControlBtn").on("click",function(){i()(".videoControlBtn").toggleClass("off"),v.isVideoOn()?v.disableVideo():v.enableVideo()}),i()(".audioControlBtn").on("click",function(){i()(".audioControlBtn").toggleClass("off"),v.isAudioOn()?v.disableAudio():v.enableAudio()}),i()(".shareScreenBtn").on("click",function(e){e.currentTarget.classList.contains("disabled")||(p?_():function(){r.a.disable(".shareScreenBtn"),p=AgoraRTC.createClient({codec:f.transcode,mode:"live"});var e=Object(a.a)(f,{uid:l.c});S(p,e).then(function(t){(g=R(t,e,{screen:!0,video:!1,audio:!1,extensionId:"minllpmhdgpndnkomcoccfekfegnlikg",mediaSource:"screen"})).init(function(){r.a.enable(".shareScreenBtn"),g.on("stopScreenSharing",function(){_(),I("Stop Screen Sharing at"+new Date)}),p.publish(g,function(e){I("Publish share stream error: "+e),I("getUserMedia failed",e)})},function(e){r.a.enable(".shareScreenBtn"),I("getUserMedia failed",e),_(),Object(c.a)()&&d.a.danger('Please install chrome extension before using sharing screen. \n            <hr />\n            <a id="addExtensionBtn" class="button is-link" onclick="chrome.webstore.install(\'https://chrome.google.com/webstore/detail/minllpmhdgpndnkomcoccfekfegnlikg\', installSuccess, installError)">Add chrome extension</a>\n          ',5e3)})})}())}),i()(".disableRemoteBtn").on("click",function(e){if(!(e.currentTarget.classList.contains("disabled")||m.length<=1)){i()(".disableRemoteBtn").toggleClass("off");var t=v.getId();Array.from(document.querySelectorAll(".video-item:not(#video-item-"+t+")")).map(function(e){return"none"===e.style.display?(e.style.display="block",1):(e.style.display="none",0)})}}),i()(window).resize(function(e){Object(c.c)()?s.a.enterFullScreen():s.a.exitFullScreen(),s.a.customRender(m,f.displayMode,b)}),i()(".ag-container").dblclick(function(e){for(var t=e.target;!t.classList.contains("video-item");)if((t=t.parentNode).classList.contains("ag-main"))return;var n=parseInt(t.id.split("-")[2],10);if(n!==b&&n!==v.getId()){var i=2===f.displayMode?l.c:n;B(b,i),y=A(b=i)}s.a.customRender(m,f.displayMode,b)}),i()(document).mousemove(function(t){e._toolbarToggle&&clearTimeout(e._toolbarToggle),i()(".ag-btn-group").addClass("active"),e._toolbarToggle=setTimeout(function(){i()(".ag-btn-group").removeClass("active")},2500)}),h.on("stream-added",function(e){var t=e.stream,n=t.getId();M("New stream added: "+n),M((new Date).toLocaleTimeString()),M("Subscribe ",t),n===l.c&&(f.displayMode=2,b=n,y=t,p||r.a.disable(".shareScreenBtn"),r.a.disable([".displayModeBtn",".disableRemoteBtn"])),n!==b&&(2===f.displayMode?h.setRemoteVideoStreamType(t,1):(y&&h.setRemoteVideoStreamType(y,1),y=t,b=n)),h.subscribe(t,function(e){M("Subscribe stream failed",e)})}),h.on("peer-leave",function(e){var t=e.uid;if(M("Peer has left: "+t),M((new Date).toLocaleTimeString()),t===l.c&&(f.displayMode=0,"video"===f.attendeeMode&&r.a.enable(".shareScreenBtn"),r.a.enable([".displayModeBtn",".disableRemoteBtn"]),_()),t===b){var n=2===f.displayMode?l.c:v.getId();B(b,n),y=A(b=n)}k(e.uid)}),h.on("stream-subscribed",function(e){var t=e.stream;M("Got stream-subscribed event"),M((new Date).toLocaleTimeString()),M("Subscribe remote stream successfully: "+t.getId()),x(t)}),h.on("stream-removed",function(e){var t=e.stream,n=t.getId();if(M("Stream removed: "+n),M((new Date).toLocaleTimeString()),n===l.c&&(f.displayMode=0,"video"===f.attendeeMode&&r.a.enable(".shareScreenBtn"),r.a.enable([".displayModeBtn",".disableRemoteBtn"]),_()),n===b){var i=2===f.displayMode?l.c:v.getId();B(b,i),y=A(b=i)}k(t.getId())}),S(h,f).then(function(e){var t=Object(c.d)()?{}:{cameraId:f.cameraId,microphoneId:f.microphoneId};v=R(e,f,t),"audience"!==f.attendeeMode&&(b=e,y=v),h.enableDualStream(function(){M("Enable dual stream success!")},function(e){M(e)}),v.init(function(){"audience"!==f.attendeeMode&&(x(v,!0),h.publish(v,function(e){M("Publish local stream error: "+e)}))},function(e){M("getUserMedia failed",e)})})}.call(this,n(20))},function(e,t,n){},,function(e,t,n){}]);
+console.log("Last modification time: 2019-9-30 18:17:06");
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	function webpackJsonpCallback(data) {
+/******/ 		var chunkIds = data[0];
+/******/ 		var moreModules = data[1];
+/******/ 		var executeModules = data[2];
+/******/
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, resolves = [];
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(installedChunks[chunkId]) {
+/******/ 				resolves.push(installedChunks[chunkId][0]);
+/******/ 			}
+/******/ 			installedChunks[chunkId] = 0;
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
+/******/ 				modules[moduleId] = moreModules[moduleId];
+/******/ 			}
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(data);
+/******/
+/******/ 		while(resolves.length) {
+/******/ 			resolves.shift()();
+/******/ 		}
+/******/
+/******/ 		// add entry modules from loaded chunk to deferred list
+/******/ 		deferredModules.push.apply(deferredModules, executeModules || []);
+/******/
+/******/ 		// run deferred modules when all chunks ready
+/******/ 		return checkDeferredModules();
+/******/ 	};
+/******/ 	function checkDeferredModules() {
+/******/ 		var result;
+/******/ 		for(var i = 0; i < deferredModules.length; i++) {
+/******/ 			var deferredModule = deferredModules[i];
+/******/ 			var fulfilled = true;
+/******/ 			for(var j = 1; j < deferredModule.length; j++) {
+/******/ 				var depId = deferredModule[j];
+/******/ 				if(installedChunks[depId] !== 0) fulfilled = false;
+/******/ 			}
+/******/ 			if(fulfilled) {
+/******/ 				deferredModules.splice(i--, 1);
+/******/ 				result = __webpack_require__(__webpack_require__.s = deferredModule[0]);
+/******/ 			}
+/******/ 		}
+/******/ 		return result;
+/******/ 	}
+/******/
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// object to store loaded and loading chunks
+/******/ 	// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 	// Promise = chunk loading, 0 = chunk loaded
+/******/ 	var installedChunks = {
+/******/ 		2: 0
+/******/ 	};
+/******/
+/******/ 	var deferredModules = [];
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "./";
+/******/
+/******/ 	var jsonpArray = window["webpackJsonp"] = window["webpackJsonp"] || [];
+/******/ 	var oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
+/******/ 	jsonpArray.push = webpackJsonpCallback;
+/******/ 	jsonpArray = jsonpArray.slice();
+/******/ 	for(var i = 0; i < jsonpArray.length; i++) webpackJsonpCallback(jsonpArray[i]);
+/******/ 	var parentJsonpFunction = oldJsonpFunction;
+/******/
+/******/
+/******/ 	// add entry module to deferred list
+/******/ 	deferredModules.push([28,0]);
+/******/ 	// run deferred modules when ready
+/******/ 	return checkDeferredModules();
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */,
+/* 1 */,
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RESOLUTION_ARR; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return SHARE_ID; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return APP_ID_LIVE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return Token; });
+// Export const RESOLUTION_ARR = {
+// '120p,120p_1': [160, 120, 15, 65],
+//   '120p_3': [120, 120, 15, 50],
+//   '180p,180p_1': [320, 180, 15, 140],
+//   '180p_3': [180, 180, 15, 100],
+//   '180p_4': [240, 180, 15, 120],
+//   '240p,240p_1': [320, 240, 15, 200],
+//   '240p_3': [240, 240, 15, 140],
+//   '240p_4': [424, 240, 15, 220],
+//   '360p,360p_1': [640, 360, 15, 400],
+//   '360p_3': [360, 360, 15, 260],
+//   '360p_4': [640, 360, 30, 600],
+//   '360p_6': [360, 360, 30, 400],
+//   '360p_7': [480, 360, 15, 320],
+//   '360p_8': [480, 360, 30, 490],
+//   '360p_9': [640, 360, 15, 800],
+//   '360p_10': [640, 360, 24, 800],
+//   '360p_11': [640, 360, 24, 1000],
+//   '480p,480p_1': [640, 480, 15, 500],
+//   '480p_2': [640, 480, 30, 1000],
+//   '480p_3': [480, 480, 15, 400],
+//   '480p_4': [640, 480, 30, 750],
+//   '480p_6': [480, 480, 30, 600],
+//   '480p_8': [848, 480, 15, 610],
+//   '480p_9': [848, 480, 30, 930],
+//   '480p_10': [640, 480, 10, 400],
+//   '720p,720p_1': [1280, 720, 15, 1130],
+//   '720p_2': [1280, 720, 15, 2080],
+//   '720p_3': [1280, 720, 30, 1710],
+//   '720p_5': [960, 720, 15, 910],
+//   '720p_6': [960, 720, 30, 1380],
+//   '1080p,1080p_1': [1920, 1080, 15, 2080],
+//   '1080p_2': [1920, 1080, 30, 3000],
+//   '1080p_3': [1920, 1080, 30, 3150],
+//   '1080p_5': [1920, 1080, 60, 4780],
+//   '1440p,1440p_1': [2560, 1440, 30, 4850],
+//   '1440p_2': [2560, 1440, 60, 7350],
+//   '4k,4k_1': [3840, 2160, 30, 8910],
+//   '4k_3': [3840, 2160, 60, 13500],
+// }
+var RESOLUTION_ARR = {
+  '120p,120p_1': [160, 120, 15, 65],
+  '240p_1': [320, 240, 15, 200],
+  '360p_4': [640, 360, 30, 600],
+  '480p_4': [640, 480, 30, 750],
+  '720p_3': [1280, 720, 30, 1710],
+  '1080p_5': [1920, 1080, 60, 4780]
+};
+
+var SHARE_ID = 1;
+// eslint-disable-next-line
+// export const APP_ID_LIVE = "<#YOUR_APP_ID#>";
+var APP_ID_LIVE = 'dfd4045e54db43729556957b2513b96b';
+
+// eslint-disable-next-line
+var Token = "";
+
+/***/ }),
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var ButtonControl = function () {
+  var handler = function handler(param, callback) {
+    if (param instanceof Array) {
+      param.map(function (item) {
+        return callback(item);
+      });
+    } else {
+      callback(param);
+    }
+  };
+  var hide = function hide(ids) {
+    handler(ids, function (id) {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(id).hide();
+    });
+  };
+  var show = function show(ids) {
+    handler(ids, function (id) {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(id).show();
+    });
+  };
+  var toggle = function toggle(ids) {
+    handler(ids, function (id) {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(id).toggle();
+    });
+  };
+  var enable = function enable(ids) {
+    handler(ids, function (id) {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(id).removeClass('disabled');
+    });
+  };
+  var disable = function disable(ids) {
+    handler(ids, function (id) {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(id).addClass('disabled');
+    });
+  };
+
+  return {
+    hide: hide,
+    show: show,
+    toggle: toggle,
+    enable: enable,
+    disable: disable
+  };
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (ButtonControl);
+
+/***/ }),
+/* 4 */,
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return isSafari; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return isMobileSize; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return isChrome; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return isFirefox; });
+var isSafari = function isSafari() {
+  return (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+  );
+};
+
+var isMobileSize = function isMobileSize() {
+  if (window.innerWidth <= 800 && window.innerHeight <= 830) {
+    return true;
+  }
+  return false;
+};
+
+var isChrome = function isChrome() {
+  return (/Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor)
+  );
+};
+
+var isFirefox = function isFirefox() {
+  // eslint-disable-next-line
+  return typeof InstallTrigger !== 'undefined';
+};
+
+/***/ }),
+/* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// CONCATENATED MODULE: ./src/utils/Render/calcSize.js
+/* harmony default export */ var calcSize = (function (_ref) {
+  var width = _ref.width,
+      height = _ref.height,
+      minRatio = _ref.minRatio,
+      maxRatio = _ref.maxRatio,
+      count = _ref.count;
+
+  var maxArea = void 0;
+  var itemWidth = void 0;
+  var itemHeight = void 0;
+  var resultWidth = void 0;
+  var resultHeight = void 0;
+  // Let resultRows, resultCols
+  for (var i = 1; i <= count; i++) {
+    var rows = i;
+    var cols = Math.ceil(count / i);
+
+    itemWidth = Math.floor((width - 5) / cols);
+    itemHeight = Math.floor((height - 5) / rows);
+
+    var radio = itemHeight / itemWidth;
+    // If radio > max or < min
+    if (radio > maxRatio) {
+      radio = maxRatio;
+      itemHeight = radio * itemWidth;
+    } else if (radio < minRatio) {
+      radio = minRatio;
+      itemWidth = itemHeight / radio;
+    }
+
+    var area = itemWidth * itemHeight * count;
+
+    // If this width and height takes up the most space then we're going with that
+    if (maxArea === undefined || area > maxArea) {
+      maxArea = area;
+      resultHeight = itemHeight;
+      resultWidth = itemWidth;
+      // ResultCols = cols
+      // resultRows = rows
+    }
+  }
+
+  return {
+    height: resultHeight,
+    width: resultWidth
+  };
+});
+// EXTERNAL MODULE: ./src/utils/Render/render.css
+var render = __webpack_require__(31);
+
+// CONCATENATED MODULE: ./src/utils/Render/index.js
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+
+
+
+/* harmony default export */ var Render = __webpack_exports__["a"] = ({
+  init: function init(elementId, minRatio, maxRatio) {
+    this.MAX_RATIO = maxRatio;
+    this.MIN_RATIO = minRatio;
+    this.canvas = document.querySelector('#' + elementId);
+  },
+  _checkRatio: function _checkRatio(width, height) {
+    var ratio = height / width;
+    if (ratio > this.MAX_RATIO || ratio < this.MIN_RATIO) {
+      return false;
+    }
+    return true;
+  },
+  customRender: function customRender(streamList, mode, mainId) {
+    // Reinit canvas style first
+    this.canvas.classList.remove('container__flex');
+    this.canvas.classList.add('container__grid');
+
+    // Get no
+    var no = streamList.length;
+    mainId = mainId || streamList[streamList.length - 1] && streamList[streamList.length - 1].getId();
+
+    // We should consider no, isMobileSize, currentMode
+    if (no > 4 && mode === 1 || no > 8) {
+      mode = 0;
+      console.log('Automatically switch to tile mode...');
+      this.rendererFactory(streamList, mode, mainId);
+    } else {
+      this.rendererFactory(streamList, mode, mainId);
+    }
+    // Method stream.player.resize has been deprecated
+    // for (let stream of streamList) {
+    //   stream.player && stream.player.resize();
+    // }
+  },
+  rendererFactory: function rendererFactory(streamList, mode, mainId) {
+    if (mode === 0) {
+      this.tileRenderer(streamList);
+    } else if (mode === 1) {
+      this.pipRenderer(streamList, mainId);
+    } else if (mode === 2) {
+      this.sharingRenderer(streamList, mainId);
+    } else {
+      throw Error('Wrong mode for renderer');
+    }
+  },
+  updateVideoItem: function updateVideoItem(stream, style) {
+    var fit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
+    var id = stream.getId();
+    var dom = document.querySelector('#video-item-' + id);
+    if (!dom) {
+      dom = document.createElement('section');
+      var box = document.createElement('div');
+      dom.setAttribute('id', 'video-item-' + id);
+      dom.setAttribute('class', 'video-item');
+      box.setAttribute('class', 'video-item-box');
+      dom.appendChild(box);
+      this.canvas.appendChild(dom);
+      stream.play('video-item-' + id);
+    }
+    if (fit) {
+      dom.classList.add('window__fit');
+    } else {
+      dom.classList.remove('window__fit');
+    }
+    dom.setAttribute('style', style);
+  },
+  enterFullScreen: function enterFullScreen() {
+    this.canvas.classList.add('fullscreen');
+  },
+  exitFullScreen: function exitFullScreen() {
+    this.canvas.classList.remove('fullscreen');
+  },
+
+
+  /**
+   * @description Tile mode renderer. Recommended for 1-N people.
+   */
+  tileRenderer: function tileRenderer(streamList) {
+    var _calcSize = calcSize({
+      width: this.canvas.clientWidth,
+      height: this.canvas.clientHeight,
+      minRatio: this.MIN_RATIO,
+      maxRatio: this.MAX_RATIO,
+      count: streamList.length
+    }),
+        width = _calcSize.width,
+        height = _calcSize.height;
+    // Use flex box container
+
+
+    this.canvas.classList.remove('container__grid');
+    this.canvas.classList.add('container__flex');
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+      for (var _iterator = streamList[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        var stream = _step.value;
+
+        this.updateVideoItem(stream, 'width: ' + width + 'px; height: ' + height + 'px;');
+      }
+    } catch (err) {
+      _didIteratorError = true;
+      _iteratorError = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion && _iterator.return) {
+          _iterator.return();
+        }
+      } finally {
+        if (_didIteratorError) {
+          throw _iteratorError;
+        }
+      }
+    }
+  },
+
+
+  /**
+   * @description PIP mode renderer. Recommended for 1-4 people.
+   */
+  pipRenderer: function pipRenderer(streamList, mainId) {
+    var no = streamList.length;
+    if (no > 4) {
+      throw Error('PIP mode only suitable for less than 4 stream');
+    }
+
+    // Check ratio before using pip ratio
+    if (!this._checkRatio(this.canvas.clientWidth * 4 / 24, this.canvas.clientHeight * 3 / 12) || !this._checkRatio(this.canvas.clientWidth * 12 / 24, this.canvas.clientHeight * 12 / 12)) {
+      return this.tileRenderer(streamList);
+    }
+
+    // Now you can render in pip mode
+    for (var index = 0, count = 0; index < no; index++) {
+      var stream = streamList[index];
+      if (stream.getId() === mainId) {
+        // Main window
+        this.updateVideoItem(stream, 'grid-area: span 12/span 24/13/25');
+      } else {
+        // Sub window
+        this.updateVideoItem(stream, 'grid-area: span 3/span 4/' + (4 + 3 * count) + '/25;\n                    z-index:1;width:calc(100% - 20px);height:calc(100% - 20px)');
+        count++;
+      }
+    }
+  },
+
+
+  /**
+   * @description Screen sharing mode renderer. Recommended for 1-7 people + 1 sharing stream.
+   */
+  sharingRenderer: function sharingRenderer(streamList, mainId) {
+    var no = streamList.length;
+    if (no > 8) {
+      throw Error('Screen Sharing Mode only suitable for less than 8 stream');
+    }
+
+    // Check ratio before using screen sharing ratio unless there is only one stream
+    if (!this._checkRatio(this.canvas.clientWidth * 4 / 24, this.canvas.clientHeight * 4 / 12) && streamList.length !== 1) {
+      // Hide other streams
+      var mainStreamIndex = streamList.findIndex(function (element) {
+        return element.getId() === mainId;
+      });
+      if (mainStreamIndex === -1) {
+        throw Error('Cannot find stream by given mainId!');
+      }
+      // Only render main stream(sharing stream)
+      for (var i = 0; i < no; i++) {
+        if (i !== mainStreamIndex) {
+          this.updateVideoItem(streamList[i], 'display: none');
+        }
+      }
+      return this.sharingRenderer([streamList[mainStreamIndex]], mainId);
+    }
+
+    // Copy a temp streamList
+    var tempStreamList = [].concat(_toConsumableArray(streamList));
+    // Now you can use screen sharing mode
+    if (no === 8) {
+      // When there are 7 people with 1 sharing stream, hide audio stream or local stream
+      // try to find first audio stream and splice it, if not splice local stream
+      var shouldRemoveStreamIndex = tempStreamList.findIndex(function (element) {
+        return element.hasAudio() && !element.hasVideo();
+      });
+      if (shouldRemoveStreamIndex === -1) {
+        shouldRemoveStreamIndex = 7;
+      }
+      var shouldRemoveStream = tempStreamList[shouldRemoveStreamIndex];
+      this.updateVideoItem(shouldRemoveStream, 'display: none');
+      tempStreamList.splice(shouldRemoveStreamIndex, 1);
+    }
+
+    var _iteratorNormalCompletion2 = true;
+    var _didIteratorError2 = false;
+    var _iteratorError2 = undefined;
+
+    try {
+      for (var _iterator2 = tempStreamList[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+        var stream = _step2.value;
+
+        if (stream.getId() === mainId) {
+          // When there were less than 5 people
+          // sharing stream will take more place
+          if (no === 1) {
+            this.updateVideoItem(stream, 'grid-area: span 12/span 24/13/25;', true);
+          } else if (no < 5) {
+            this.updateVideoItem(stream, 'grid-area: span 12/span 20/13/25;', true);
+          } else {
+            this.updateVideoItem(stream, 'grid-area: span 12/span 16/13/21;', true);
+          }
+        } else {
+          // Normal stream
+          this.updateVideoItem(stream, 'grid-area: span 4/span 4');
+        }
+      }
+    } catch (err) {
+      _didIteratorError2 = true;
+      _iteratorError2 = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion2 && _iterator2.return) {
+          _iterator2.return();
+        }
+      } finally {
+        if (_didIteratorError2) {
+          throw _iteratorError2;
+        }
+      }
+    }
+  }
+});
+
+/***/ }),
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return logger; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return log; });
+var log = function log(prefix, color, info) {
+  console.log("%c " + prefix + ": " + info, "color: " + color);
+};
+
+var logger = {
+  init: function init(prefix, color) {
+    return function (info) {
+      return log(prefix, color, info);
+    };
+  }
+};
+
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 9 */,
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 11 */,
+/* 12 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony default export */ var _unused_webpack_default_export = ((function () {
+  // Object.entries
+  if (!Object.entries) Object.entries = function (obj) {
+    var ownProps = Object.keys(obj);
+    var i = ownProps.length;
+    var resArray = new Array(i); // Preallocate the Array
+    while (i--) {
+      resArray[i] = [ownProps[i], obj[ownProps[i]]];
+    }return resArray;
+  };
+})());
+
+/***/ }),
+/* 13 */,
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+// Notification-related classes are defined by bulma.css temporarily
+
+/**
+ * add notification container to body
+ */
+
+var notificationInit = function notificationInit() {
+  var container = '<div class="notification-container" \n                    style="z-index: 12;position: absolute;\n                    width: 38.2%;max-width: 450px; \n                    min-width: 300px;left: 0;\n                    bottom: 0;"></div>';
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').append(container);
+};
+
+/**
+ * Return either primary/link/info/success/warning/danger kind of notify
+ */
+var Notify = function () {
+  // Singleton for notification container
+  var container = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.notification-container');
+  if (!container.length) {
+    notificationInit();
+    container = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.notification-container');
+  }
+
+  var notifyFactory = function notifyFactory(type, msg, secs) {
+    var id = new Date().getTime();
+    var notification = '<div id="notify-' + id + '" class="notification is-' + type + '">\n                                <button class="delete"></button>\n                                ' + msg + '\n                            </div>';
+    container.append(notification);
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('#notify-' + id + ' .delete').on('click', function () {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#notify-' + id).remove();
+    });
+    setTimeout(function () {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#notify-' + id).remove();
+    }, secs);
+  };
+
+  return {
+    primary: function primary(msg, secs) {
+      notifyFactory('primary', msg, secs);
+    },
+    link: function link(msg, secs) {
+      notifyFactory('link', msg, secs);
+    },
+    info: function info(msg, secs) {
+      notifyFactory('info', msg, secs);
+    },
+    success: function success(msg, secs) {
+      notifyFactory('success', msg, secs);
+    },
+    warning: function warning(msg, secs) {
+      notifyFactory('warning', msg, secs);
+    },
+    danger: function danger(msg, secs) {
+      notifyFactory('danger', msg, secs);
+    }
+  };
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (Notify);
+
+/***/ }),
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var bulma__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(15);
+/* harmony import */ var bulma__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(bulma__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1);
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash_es_merge__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(19);
+/* harmony import */ var _assets_css_icons_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(8);
+/* harmony import */ var _assets_css_icons_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_assets_css_icons_css__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _assets_global_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(10);
+/* harmony import */ var _assets_global_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_assets_global_scss__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _meeting_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(29);
+/* harmony import */ var _meeting_scss__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_meeting_scss__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _utils_ButtonControl__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(3);
+/* harmony import */ var _utils_BrowserCheck__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(5);
+/* harmony import */ var _utils_Notify__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(17);
+/* harmony import */ var _utils_Render__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(6);
+/* harmony import */ var _utils_Settings__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(2);
+/* harmony import */ var _utils_Logger__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(7);
+/* harmony import */ var _utils_Polyfill__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(12);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// eslint-disable-next-line
+
+
+// If display a window to show video info
+var DUAL_STREAM_DEBUG = false;
+var options = {};
+var client = {};
+var localStream = {};
+var streamList = [];
+var shareClient = null;
+var shareStream = null;
+var mainId = void 0;
+var mainStream = void 0;
+
+var globalLog = _utils_Logger__WEBPACK_IMPORTED_MODULE_12__[/* logger */ "b"].init('global', 'blue');
+var shareLog = _utils_Logger__WEBPACK_IMPORTED_MODULE_12__[/* logger */ "b"].init('share', 'yellow');
+var localLog = _utils_Logger__WEBPACK_IMPORTED_MODULE_12__[/* logger */ "b"].init('local', 'green');
+
+var optionsInit = function optionsInit() {
+  var options = {
+    videoProfile: js_cookie__WEBPACK_IMPORTED_MODULE_2__["get"]('videoProfile').split(',')[0] || '480p_4',
+    videoProfileLow: js_cookie__WEBPACK_IMPORTED_MODULE_2__["get"]('videoProfileLow'),
+    cameraId: js_cookie__WEBPACK_IMPORTED_MODULE_2__["get"]('cameraId'),
+    microphoneId: js_cookie__WEBPACK_IMPORTED_MODULE_2__["get"]('microphoneId'),
+    channel: js_cookie__WEBPACK_IMPORTED_MODULE_2__["get"]('channel') || 'test',
+    transcode: js_cookie__WEBPACK_IMPORTED_MODULE_2__["get"]('transcode') || 'h264',
+    attendeeMode: js_cookie__WEBPACK_IMPORTED_MODULE_2__["get"]('attendeeMode') || 'video',
+    baseMode: js_cookie__WEBPACK_IMPORTED_MODULE_2__["get"]('baseMode') || 'avc',
+    displayMode: 1, // 0 Tile, 1 PIP, 2 screen share
+    uid: undefined, // In default it is dynamically generated
+    resolution: undefined
+  };
+
+  var tempProfile = _utils_Settings__WEBPACK_IMPORTED_MODULE_11__[/* RESOLUTION_ARR */ "b"][js_cookie__WEBPACK_IMPORTED_MODULE_2__["get"]('videoProfile')];
+  options.resolution = tempProfile[0] / tempProfile[1] || 4 / 3;
+
+  // Agora live
+  options.key = _utils_Settings__WEBPACK_IMPORTED_MODULE_11__[/* APP_ID_LIVE */ "a"];
+  options.token = _utils_Settings__WEBPACK_IMPORTED_MODULE_11__[/* Token */ "d"];
+
+  return options;
+};
+
+var uiInit = function uiInit(options) {
+  _utils_Render__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"].init('ag-canvas', 9 / 16, 8 / 5);
+  // Mobile page should remove title and footer
+  if (Object(_utils_BrowserCheck__WEBPACK_IMPORTED_MODULE_8__[/* isMobileSize */ "c"])()) {
+    _utils_Render__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"].enterFullScreen();
+  }
+  // Only firefox and chrome support screen sharing
+  if (!Object(_utils_BrowserCheck__WEBPACK_IMPORTED_MODULE_8__[/* isFirefox */ "b"])() && !Object(_utils_BrowserCheck__WEBPACK_IMPORTED_MODULE_8__[/* isChrome */ "a"])()) {
+    _utils_ButtonControl__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].disable('.shareScreenBtn');
+  }
+
+  jquery__WEBPACK_IMPORTED_MODULE_1___default()('#room-name').html(options.channel);
+  switch (options.attendeeMode) {
+    case 'audio-only':
+      _utils_ButtonControl__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].hide(['.videoControlBtn', '.shareScreenBtn']);
+      break;
+    case 'audience':
+      _utils_ButtonControl__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].hide(['.videoControlBtn', '.audioControlBtn', '.shareScreenBtn']);
+      break;
+    default:
+    case 'video':
+      break;
+  }
+};
+
+var clientInit = function clientInit(client, options) {
+  return new Promise(function (resolve, reject) {
+    client.init(options.key, function () {
+      globalLog('AgoraRTC client initialized');
+      var lowStreamParam = _utils_Settings__WEBPACK_IMPORTED_MODULE_11__[/* RESOLUTION_ARR */ "b"][options.videoProfileLow];
+      client.join(options.token, options.channel, options.uid, function (uid) {
+        Object(_utils_Logger__WEBPACK_IMPORTED_MODULE_12__[/* log */ "a"])(uid, 'brown', 'User ' + uid + ' join channel successfully');
+        Object(_utils_Logger__WEBPACK_IMPORTED_MODULE_12__[/* log */ "a"])(uid, 'brown', new Date().toLocaleTimeString());
+        client.setLowStreamParameter({
+          width: lowStreamParam[0],
+          height: lowStreamParam[1],
+          framerate: lowStreamParam[2],
+          bitrate: lowStreamParam[3]
+        });
+        // Create localstream
+        resolve(uid);
+      }, function (err) {
+        reject(err);
+      });
+    });
+  });
+};
+
+/**
+ *
+ * @param {*} uid
+ * @param {*} options global option
+ * @param {*} config stream config
+ */
+var streamInit = function streamInit(uid, options, config) {
+  var defaultConfig = {
+    streamID: uid,
+    audio: true,
+    video: true,
+    screen: false
+  };
+
+  switch (options.attendeeMode) {
+    case 'audio-only':
+      defaultConfig.video = false;
+      break;
+    case 'audience':
+      defaultConfig.video = false;
+      defaultConfig.audio = false;
+      break;
+    default:
+    case 'video':
+      break;
+  }
+  // eslint-disable-next-line
+  var stream = AgoraRTC.createStream(Object(lodash_es_merge__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(defaultConfig, config));
+  stream.setVideoProfile(options.videoProfile);
+  return stream;
+};
+
+var shareEnd = function shareEnd() {
+  try {
+    shareClient && shareClient.unpublish(shareStream);
+    shareStream && shareStream.close();
+    shareClient && shareClient.leave(function () {
+      shareLog('Share client succeed to leave.');
+    }, function () {
+      shareLog('Share client failed to leave.');
+    });
+  } finally {
+    shareClient = null;
+    shareStream = null;
+  }
+};
+
+var shareStart = function shareStart() {
+  _utils_ButtonControl__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].disable('.shareScreenBtn');
+  // eslint-disable-next-line
+  shareClient = AgoraRTC.createClient({
+    codec: options.transcode,
+    mode: 'live'
+  });
+  var shareOptions = Object(lodash_es_merge__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(options, {
+    uid: _utils_Settings__WEBPACK_IMPORTED_MODULE_11__[/* SHARE_ID */ "c"]
+  });
+  clientInit(shareClient, shareOptions).then(function (uid) {
+    var config = {
+      screen: true,
+      video: false,
+      audio: false,
+      extensionId: 'minllpmhdgpndnkomcoccfekfegnlikg',
+      mediaSource: 'screen'
+    };
+    shareStream = streamInit(uid, shareOptions, config);
+    shareStream.init(function () {
+      _utils_ButtonControl__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].enable('.shareScreenBtn');
+      shareStream.on('stopScreenSharing', function () {
+        shareEnd();
+        shareLog('Stop Screen Sharing at' + new Date());
+      });
+      shareClient.publish(shareStream, function (err) {
+        shareLog('Publish share stream error: ' + err);
+        shareLog('getUserMedia failed', err);
+      });
+    }, function (err) {
+      _utils_ButtonControl__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].enable('.shareScreenBtn');
+      shareLog('getUserMedia failed', err);
+      shareEnd();
+      if (Object(_utils_BrowserCheck__WEBPACK_IMPORTED_MODULE_8__[/* isChrome */ "a"])()) {
+        // If (!chrome.app.isInstalled) {
+        var msg = 'Please install chrome extension before using sharing screen. \n            <hr />\n            <a id="addExtensionBtn" class="button is-link" onclick="chrome.webstore.install(\'https://chrome.google.com/webstore/detail/minllpmhdgpndnkomcoccfekfegnlikg\', installSuccess, installError)">Add chrome extension</a>\n          ';
+        _utils_Notify__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"].danger(msg, 5000);
+        // }
+      }
+    });
+  });
+};
+
+window.installSuccess = function () {
+  globalLog.apply(undefined, arguments);
+};
+
+window.installError = function () {
+  globalLog.apply(undefined, arguments);
+  _utils_Notify__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"].danger('Failed to install the extension, please check the network and console.', 3000);
+};
+
+var removeStream = function removeStream(id) {
+  streamList.map(function (item, index) {
+    if (item.getId() === id) {
+      streamList[index].close();
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()('#video-item-' + id).remove();
+      streamList.splice(index, 1);
+      return 1;
+    }
+    return 0;
+  });
+  if (streamList.length <= 4 && options.displayMode !== 2) {
+    _utils_ButtonControl__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].enable('.displayModeBtn');
+  }
+  _utils_Render__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"].customRender(streamList, options.displayMode, mainId);
+};
+
+var addStream = function addStream(stream) {
+  var push = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+  var id = stream.getId();
+  // Check for redundant
+  var redundant = streamList.some(function (item) {
+    return item.getId() === id;
+  });
+  if (redundant) {
+    return;
+  }
+  // Do push for localStream and unshift for other streams
+  push ? streamList.push(stream) : streamList.unshift(stream);
+  if (streamList.length > 4) {
+    options.displayMode = options.displayMode === 1 ? 0 : options.displayMode;
+    _utils_ButtonControl__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].disable(['.displayModeBtn', '.disableRemoteBtn']);
+  }
+  _utils_Render__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"].customRender(streamList, options.displayMode, mainId);
+};
+
+var getStreamById = function getStreamById(id) {
+  return streamList.filter(function (item) {
+    return item.getId() === id;
+  })[0];
+};
+
+var enableDualStream = function enableDualStream() {
+  client.enableDualStream(function () {
+    localLog('Enable dual stream success!');
+  }, function (e) {
+    localLog(e);
+  });
+};
+
+var setHighStream = function setHighStream(prev, next) {
+  if (prev === next) {
+    return;
+  }
+  var prevStream = void 0;
+  var nextStream = void 0;
+  // Get stream by id
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    for (var _iterator = streamList[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var stream = _step.value;
+
+      var id = stream.getId();
+      if (id === prev) {
+        prevStream = stream;
+      } else if (id === next) {
+        nextStream = stream;
+      } else {
+        // Do nothing
+      }
+    }
+    // Set prev stream to low
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+
+  prevStream && client.setRemoteVideoStreamType(prevStream, 1);
+  // Set next stream to high
+  nextStream && client.setRemoteVideoStreamType(nextStream, 0);
+};
+/**
+ * Add callback for client event to control streams
+ * @param {*} client
+ * @param {*} streamList
+ */
+var subscribeStreamEvents = function subscribeStreamEvents() {
+  client.on('stream-added', function (evt) {
+    var stream = evt.stream;
+    var id = stream.getId();
+    localLog('New stream added: ' + id);
+    localLog(new Date().toLocaleTimeString());
+    localLog('Subscribe ', stream);
+    if (id === _utils_Settings__WEBPACK_IMPORTED_MODULE_11__[/* SHARE_ID */ "c"]) {
+      options.displayMode = 2;
+      mainId = id;
+      mainStream = stream;
+      if (!shareClient) {
+        _utils_ButtonControl__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].disable('.shareScreenBtn');
+      }
+      _utils_ButtonControl__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].disable(['.displayModeBtn', '.disableRemoteBtn']);
+    }
+    if (id !== mainId) {
+      if (options.displayMode === 2) {
+        client.setRemoteVideoStreamType(stream, 1);
+      } else {
+        mainStream && client.setRemoteVideoStreamType(mainStream, 1);
+        mainStream = stream;
+        mainId = id;
+      }
+    }
+    client.subscribe(stream, function (err) {
+      localLog('Subscribe stream failed', err);
+    });
+  });
+
+  client.on('peer-leave', function (evt) {
+    var id = evt.uid;
+    localLog('Peer has left: ' + id);
+    localLog(new Date().toLocaleTimeString());
+    if (id === _utils_Settings__WEBPACK_IMPORTED_MODULE_11__[/* SHARE_ID */ "c"]) {
+      options.displayMode = 0;
+      if (options.attendeeMode === 'video') {
+        _utils_ButtonControl__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].enable('.shareScreenBtn');
+      }
+      _utils_ButtonControl__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].enable(['.displayModeBtn', '.disableRemoteBtn']);
+      shareEnd();
+    }
+    if (id === mainId) {
+      var next = options.displayMode === 2 ? _utils_Settings__WEBPACK_IMPORTED_MODULE_11__[/* SHARE_ID */ "c"] : localStream.getId();
+      setHighStream(mainId, next);
+      mainId = next;
+      mainStream = getStreamById(mainId);
+    }
+    removeStream(evt.uid);
+  });
+
+  client.on('stream-subscribed', function (evt) {
+    var stream = evt.stream;
+    localLog('Got stream-subscribed event');
+    localLog(new Date().toLocaleTimeString());
+    localLog('Subscribe remote stream successfully: ' + stream.getId());
+    addStream(stream);
+  });
+
+  client.on('stream-removed', function (evt) {
+    var stream = evt.stream;
+    var id = stream.getId();
+    localLog('Stream removed: ' + id);
+    localLog(new Date().toLocaleTimeString());
+    if (id === _utils_Settings__WEBPACK_IMPORTED_MODULE_11__[/* SHARE_ID */ "c"]) {
+      options.displayMode = 0;
+      if (options.attendeeMode === 'video') {
+        _utils_ButtonControl__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].enable('.shareScreenBtn');
+      }
+      _utils_ButtonControl__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].enable(['.displayModeBtn', '.disableRemoteBtn']);
+      shareEnd();
+    }
+    if (id === mainId) {
+      var next = options.displayMode === 2 ? _utils_Settings__WEBPACK_IMPORTED_MODULE_11__[/* SHARE_ID */ "c"] : localStream.getId();
+      setHighStream(mainId, next);
+      mainId = next;
+      mainStream = getStreamById(mainId);
+    }
+    removeStream(stream.getId());
+  });
+};
+
+var subscribeMouseEvents = function subscribeMouseEvents() {
+  jquery__WEBPACK_IMPORTED_MODULE_1___default()('.displayModeBtn').on('click', function (e) {
+    if (e.currentTarget.classList.contains('disabled') || streamList.length <= 1) {
+      return;
+    }
+    // 1 refer to pip mode
+    if (options.displayMode === 1) {
+      options.displayMode = 0;
+      _utils_ButtonControl__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].disable('.disableRemoteBtn');
+    } else if (options.displayMode === 0) {
+      options.displayMode = 1;
+      _utils_ButtonControl__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].enable('.disableRemoteBtn');
+    } else {
+      // Do nothing when in screen share mode
+    }
+    _utils_Render__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"].customRender(streamList, options.displayMode, mainId);
+  });
+
+  jquery__WEBPACK_IMPORTED_MODULE_1___default()('.exitBtn').on('click', function () {
+    try {
+      shareClient && shareEnd();
+      client && client.unpublish(localStream);
+      localStream && localStream.close();
+      client && client.leave(function () {
+        localLog('Client succeed to leave.');
+      }, function () {
+        localLog('Client failed to leave.');
+      });
+    } finally {
+      // Redirect to index
+      window.location.href = 'index.html';
+    }
+  });
+
+  jquery__WEBPACK_IMPORTED_MODULE_1___default()('.videoControlBtn').on('click', function () {
+    jquery__WEBPACK_IMPORTED_MODULE_1___default()('.videoControlBtn').toggleClass('off');
+    localStream.isVideoOn() ? localStream.disableVideo() : localStream.enableVideo();
+  });
+
+  jquery__WEBPACK_IMPORTED_MODULE_1___default()('.audioControlBtn').on('click', function () {
+    jquery__WEBPACK_IMPORTED_MODULE_1___default()('.audioControlBtn').toggleClass('off');
+    localStream.isAudioOn() ? localStream.disableAudio() : localStream.enableAudio();
+  });
+
+  jquery__WEBPACK_IMPORTED_MODULE_1___default()('.shareScreenBtn').on('click', function (e) {
+    if (e.currentTarget.classList.contains('disabled')) {
+      return;
+    }
+    if (shareClient) {
+      shareEnd();
+    } else {
+      shareStart();
+    }
+  });
+
+  jquery__WEBPACK_IMPORTED_MODULE_1___default()('.disableRemoteBtn').on('click', function (e) {
+    if (e.currentTarget.classList.contains('disabled') || streamList.length <= 1) {
+      return;
+    }
+    jquery__WEBPACK_IMPORTED_MODULE_1___default()('.disableRemoteBtn').toggleClass('off');
+    var list = void 0;
+    var id = localStream.getId();
+    list = Array.from(document.querySelectorAll('.video-item:not(#video-item-' + id + ')'));
+    list.map(function (item) {
+      if (item.style.display === 'none') {
+        item.style.display = 'block';
+        return 1;
+      }
+      item.style.display = 'none';
+      return 0;
+    });
+  });
+
+  jquery__WEBPACK_IMPORTED_MODULE_1___default()(window).resize(function (_) {
+    if (Object(_utils_BrowserCheck__WEBPACK_IMPORTED_MODULE_8__[/* isMobileSize */ "c"])()) {
+      _utils_Render__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"].enterFullScreen();
+    } else {
+      _utils_Render__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"].exitFullScreen();
+    }
+    _utils_Render__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"].customRender(streamList, options.displayMode, mainId);
+  });
+
+  // Dbl click to switch high/low stream
+  jquery__WEBPACK_IMPORTED_MODULE_1___default()('.ag-container').dblclick(function (e) {
+    var dom = e.target;
+    while (!dom.classList.contains('video-item')) {
+      dom = dom.parentNode;
+      if (dom.classList.contains('ag-main')) {
+        return;
+      }
+    }
+    var id = parseInt(dom.id.split('-')[2], 10);
+    if (id !== mainId && id !== localStream.getId()) {
+      var next = options.displayMode === 2 ? _utils_Settings__WEBPACK_IMPORTED_MODULE_11__[/* SHARE_ID */ "c"] : id;
+      // Force to swtich
+      setHighStream(mainId, next);
+      mainId = next;
+      mainStream = getStreamById(mainId);
+    }
+    _utils_Render__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"].customRender(streamList, options.displayMode, mainId);
+  });
+
+  jquery__WEBPACK_IMPORTED_MODULE_1___default()(document).mousemove(function (_) {
+    if (global._toolbarToggle) {
+      clearTimeout(global._toolbarToggle);
+    }
+    jquery__WEBPACK_IMPORTED_MODULE_1___default()('.ag-btn-group').addClass('active');
+    global._toolbarToggle = setTimeout(function () {
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()('.ag-btn-group').removeClass('active');
+    }, 2500);
+  });
+};
+
+var infoDetectSchedule = function infoDetectSchedule() {
+  var no = streamList.length;
+
+  var _loop = function _loop(i) {
+    var item = streamList[i];
+    var id = item.getId();
+    var box = jquery__WEBPACK_IMPORTED_MODULE_1___default()('#video-item-' + id + ' .video-item-box');
+    var width = void 0;
+    var height = void 0;
+    var frameRate = void 0;
+    var HighOrLow = void 0;
+    // Whether high or low stream
+    if (id === mainId) {
+      HighOrLow = 'High';
+    } else {
+      HighOrLow = 'Low';
+    }
+    if (i === no - 1) {
+      HighOrLow = 'local';
+    }
+    item.getStats(function (e) {
+      if (i === no - 1) {
+        width = e.videoSendResolutionWidth;
+        height = e.videoSendResolutionHeight;
+        frameRate = e.videoSendFrameRate;
+      } else {
+        width = e.videoReceivedResolutionWidth;
+        height = e.videoReceivedResolutionHeight;
+        frameRate = e.videoReceiveFrameRate;
+      }
+
+      var str = '\n        <p>uid: ' + id + '</p>\n        <p>' + width + '*' + height + ' ' + frameRate + 'fps</p>\n        <p>' + HighOrLow + '</p>\n      ';
+      box.html(str);
+    });
+  };
+
+  for (var i = 0; i < no; i++) {
+    _loop(i);
+  }
+};
+
+// ------------- start --------------
+// ----------------------------------
+options = optionsInit();
+uiInit(options);
+// eslint-disable-next-line
+client = AgoraRTC.createClient({
+  codec: options.transcode,
+  mode: 'live'
+});
+subscribeMouseEvents();
+subscribeStreamEvents();
+clientInit(client, options).then(function (uid) {
+  // Use selected device
+  var config = Object(_utils_BrowserCheck__WEBPACK_IMPORTED_MODULE_8__[/* isSafari */ "d"])() ? {} : {
+    cameraId: options.cameraId,
+    microphoneId: options.microphoneId
+  };
+  localStream = streamInit(uid, options, config);
+  // Enable dual stream
+  if (options.attendeeMode !== 'audience') {
+    // MainId default to be localStream's ID
+    mainId = uid;
+    mainStream = localStream;
+  }
+  enableDualStream();
+  localStream.init(function () {
+    if (options.attendeeMode !== 'audience') {
+      addStream(localStream, true);
+      client.publish(localStream, function (err) {
+        localLog('Publish local stream error: ' + err);
+      });
+    }
+  }, function (err) {
+    localLog('getUserMedia failed', err);
+  });
+});
+
+if (DUAL_STREAM_DEBUG) {
+  setInterval(infoDetectSchedule, 1000);
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(20)))
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 30 */,
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ })
+/******/ ]);
